@@ -10,28 +10,19 @@
     moms: { label: "Mom’s Kitchen", desc: "Kids’ weekly veggie & tiffin kits" },
     family: { label: "Family Kitchen", desc: "Complete weekly family basket" },
   };
-  const img = (id, w = 600) =>
-    `https://images.unsplash.com/${id}?auto=format&fit=crop&w=${w}&q=80`;
+  const img = (id, w = 600) => `https://images.unsplash.com/${id}?auto=format&fit=crop&w=${w}&q=80`;
 
   const CATALOG = {
     Staples: [
-      { id: "rice", name: "Sona Masoori Rice", blurb: "Premium rice", pricePerKg: 170, unit: "kg", photo: img("photo-1586201375761-83865001e31c"), nutri: "Carbs & Energy · Low glycemic index" },
-      { id: "atta", name: "Whole Wheat Atta", blurb: "Stone-ground", pricePerKg: 54, unit: "kg", photo: img("photo-1574323347407-f5e1ad6d020b"), nutri: "High Dietary Fiber · Good for Digestion" },
-      { id: "dal", name: "Toor Dal", blurb: "Protein staple", pricePerKg: 140, unit: "kg", photo: img("photo-1516684732162-798a0062be99"), nutri: "Plant Protein & Iron · Heart Healthy" },
-      { id: "oil", name: "Cold-Pressed Oil", blurb: "Kitchen essential", pricePerKg: 220, unit: "L", photo: img("photo-1474979266404-7eaacbcd87c5"), nutri: "Healthy Fats · Zero Trans Fat" },
+      { id: "rice", name: "Sona Masoori Rice", pricePerKg: 170, photo: img("photo-1586201375761-83865001e31c"), nutri: "Carbs & Energy · Low glycemic index" },
+      { id: "atta", name: "Whole Wheat Atta", pricePerKg: 54, photo: img("photo-1574323347407-f5e1ad6d020b"), nutri: "High Dietary Fiber · Good for Digestion" },
+      { id: "dal", name: "Toor Dal", pricePerKg: 140, photo: img("photo-1516684732162-798a0062be99"), nutri: "Plant Protein & Iron · Heart Healthy" },
     ],
     Veggies: [
-      { id: "lady-finger", name: "Lady Finger", blurb: "Farm fresh", pricePerKg: 60, photo: "https://images.pexels.com/photos/1656666/pexels-photo-1656666.jpeg?auto=compress&cs=tinysrgb&w=600", nutri: "Rich in Folate & Vitamin C · ✅ Diabetes Friendly", bpSafe: true },
-      { id: "potato", name: "Potato", blurb: "Everyday staple", pricePerKg: 36, photo: img("photo-1518977676601-b53f82aba655"), nutri: "Potassium & Energy · ⚠️ Caution for strict diabetes", diabetesWarn: true },
-      { id: "tomato", name: "Tomato", blurb: "Vine ripened", pricePerKg: 48, photo: img("photo-1592924357228-91a4daadcfea"), nutri: "Lycopene & Antioxidants · ✅ Heart Healthy", bpSafe: true },
-      { id: "carrot", name: "Carrot", blurb: "Sweet & crisp", pricePerKg: 52, photo: img("photo-1598170845058-32b9d6a5da37"), nutri: "Beta-Carotene & Vitamin A · Supports Vision", bpSafe: true },
-      { id: "beans", name: "French Beans", blurb: "Tender pods", pricePerKg: 70, photo: img("photo-1567375698348-5d9d1edb2e83"), nutri: "Dietary Fiber & Plant Iron", bpSafe: true },
-      { id: "capsicum", name: "Capsicum", blurb: "Crunchy & mild", pricePerKg: 80, photo: img("photo-1563565375-f3fdfdbefa83"), nutri: "Vitamin C & Metabolism Boost", bpSafe: true },
-    ],
-    Fruits: [
-      { id: "banana", name: "Banana", blurb: "Energy fruit", pricePerKg: 55, photo: img("photo-1571771894821-ce9b6c11b08e"), nutri: "Potassium & Instant Energy" },
-      { id: "apple", name: "Apple", blurb: "Crisp & juicy", pricePerKg: 180, photo: img("photo-1567306226416-28f0efdc88ce"), nutri: "Pectin Fiber & Low GI · Heart Friendly" },
-      { id: "papaya", name: "Papaya", blurb: "Vitamin rich", pricePerKg: 45, photo: img("photo-1517282009859-f000ec3b26fe"), nutri: "Papain Enzyme · Excellent for Digestion" },
+      { id: "lady-finger", name: "Lady Finger", pricePerKg: 60, photo: "https://images.pexels.com/photos/1656666/pexels-photo-1656666.jpeg?auto=compress&cs=tinysrgb&w=600", nutri: "Rich in Folate & Vitamin C · ✅ Diabetes Friendly" },
+      { id: "potato", name: "Potato", pricePerKg: 36, photo: img("photo-1518977676601-b53f82aba655"), nutri: "Potassium & Energy · ⚠️ Caution for strict diabetes" },
+      { id: "tomato", name: "Tomato", pricePerKg: 48, photo: img("photo-1592924357228-91a4daadcfea"), nutri: "Lycopene & Antioxidants · ✅ Heart Healthy" },
+      { id: "carrot", name: "Carrot", pricePerKg: 52, photo: img("photo-1598170845058-32b9d6a5da37"), nutri: "Beta-Carotene & Vitamin A · Supports Vision" },
     ],
   };
 
@@ -40,14 +31,6 @@
     { id: "tf-spin", name: "Spinach Kit", price: 35, photo: img("photo-1576045057995-568f588f82fb"), nutri: "Iron & Calcium for Strong Bones" },
     { id: "tf-pot", name: "Potato Kit", price: 30, photo: img("photo-1518977676601-b53f82aba655"), nutri: "Energy-dense Carbs for Active Kids" },
     { id: "tf-tom", name: "Tomato Kit", price: 40, photo: img("photo-1592924357228-91a4daadcfea"), nutri: "Vitamin C & Antioxidants for Immunity" },
-    { id: "tf-carrot", name: "Carrot Kit", price: 38, photo: img("photo-1598170845058-32b9d6a5da37"), nutri: "Vitamin A for Sharp Vision & Growth" },
-    { id: "tf-beans", name: "Beans Kit", price: 42, photo: img("photo-1622206151226-18ca2c9ab4a1"), nutri: "Dietary Fiber & Plant Protein for Muscles" },
-  ];
-
-  const FAMILY_STAPLES = [
-    { id: "onion", name: "Onion", pricePerKg: 40, photo: img("photo-1518977956812-cd3dbadaafcd"), nutri: "Quercetin & Blood Circulation" },
-    { id: "potato", name: "Potato", pricePerKg: 36, photo: img("photo-1518977676601-b53f82aba655"), nutri: "Potassium & Energy Staple" },
-    { id: "tomato", name: "Tomato", pricePerKg: 48, photo: img("photo-1592924357228-91a4daadcfea"), nutri: "Heart-Healthy Lycopene" },
   ];
 
   const ORDERS = [
@@ -66,36 +49,12 @@
     childNames: { 1: "Kit 1", 2: "Kit 2", 3: "Kit 3", 4: "Kit 4" },
     childSeparateVeggies: { 1: {}, 2: {} },
     cart: [],
-    odDraft: {},
-    family: {
-      staples: { onion: 1.5, potato: 1.5, tomato: 1 },
-      veggies: {},
-      leafy: { spinach: false, methi: false, dill: false },
-      sprouts: { moong: false, chana: false },
-      extras: { fruit: false },
-    },
-    navDir: 1,
+    family: { veggies: {} },
   };
 
   const $ = (sel, root = document) => root.querySelector(sel);
   const screensEl = $("#screens");
   const loaderEl = $("#loader");
-
-  const TITLES = {
-    splash: "Smart Green",
-    login: "Login · Smart Green",
-    otp: "Enter OTP · Smart Green",
-    location: "Location · Smart Green",
-    hub: "Choose Journey · Smart Green",
-    home: "Home · Smart Green",
-    cart: "Your Cart · Smart Green",
-    checkout: "Checkout · Smart Green",
-    success: "Order Confirmed · Smart Green",
-    nutri: "Nutri-Tracker · Smart Green",
-    orders: "My Orders · Smart Green",
-  };
-
-  let renderTimer = 0;
 
   function persistNow() {
     try { localStorage.setItem(STORAGE, JSON.stringify(state)); } catch (_) {}
@@ -123,11 +82,6 @@
     return new Promise((r) => setTimeout(() => { loaderEl.hidden = true; r(); }, ms));
   }
 
-  function setTitle() {
-    document.title = TITLES[state.screen] || TITLES.splash;
-  }
-
-  function formatGrams(g) { return g >= 1000 ? `${(g / 1000).toFixed(g % 1000 === 0 ? 0 : 1)}kg` : `${g}g`; }
   function priceForWeight(pricePerKg, grams) { return Math.round(pricePerKg * (grams / 1000)); }
 
   function logoSvg(size = 48) {
@@ -156,7 +110,7 @@
   function sectionTotal(src) { return itemsBySource(src).reduce((n, i) => n + ((i.price || 0) * (i.qty || 1)), 0); }
   function cartTotals() {
     const subtotal = sectionTotal("ondemand") + sectionTotal("moms") + sectionTotal("family");
-    return { subtotal, movMet: subtotal >= MOV, movShort: Math.max(0, MOV - subtotal) };
+    return { subtotal };
   }
 
   function upsertCart(item) {
@@ -219,7 +173,7 @@
       <h1 class="font-display text-2xl font-extrabold mt-4 mb-4">What would you like to plan?</h1>
       <div class="space-y-4">
         <button type="button" data-hub-mode="ondemand" class="hub-box w-full text-left p-4 rounded-2xl block">
-          <span class="text-xs font-extrabold uppercase bg-yellow-400 px-2 py-0.5 rounded border border-black">⚡ Express</span>
+          <span class="text-xs font-extrabold uppercase bg-[#f8cb2e] px-2 py-0.5 rounded border border-black">⚡ Express</span>
           <h2 class="font-display text-xl font-extrabold mt-2">On-Demand Grocery</h2>
           <p class="text-sm font-bold text-gray-700 mt-1">Pick exact fresh veggies & staples with ₹200 MOV.</p>
         </button>
@@ -241,8 +195,8 @@
   function renderOnDemandPane() {
     const items = CATALOG[state.odCategory] || [];
     return `<div class="mode-pane">
-      <div class="pill-scroll mb-3 flex gap-2 overflow-x-auto pb-1">${Object.keys(CATALOG).map((c) => `<button type="button" data-od-cat="${c}" class="cat-pill px-3 py-1.5 rounded-xl border-2 border-black font-extrabold text-xs ${state.odCategory === c ? "bg-yellow-400" : "bg-white"}">${c}</button>`).join("")}</div>
-      <div class="prod-grid grid grid-cols-2 gap-3">${items.map((item) => `<article class="prod-card p-3 rounded-2xl bg-white border-2 border-black shadow-[4px_4px_0px_#000]"><div class="produce-art rounded-xl overflow-hidden mb-2">${producePhoto(item)}</div><h3 class="font-extrabold text-sm">${item.name}</h3><p class="text-[10px] font-bold text-gray-600 mb-2">${item.nutri || ""}</p><button type="button" class="btn-add w-full py-2 rounded-xl bg-yellow-400 border-2 border-black font-extrabold text-xs shadow-[2px_2px_0px_#000]" data-od-add="${item.id}">Add ₹${priceForWeight(item.pricePerKg || 50, 500)}</button></article>`).join("")}</div>
+      <div class="pill-scroll mb-3 flex gap-2 overflow-x-auto pb-1">${Object.keys(CATALOG).map((c) => `<button type="button" data-od-cat="${c}" class="cat-pill px-3 py-1.5 rounded-xl border-2 border-black font-extrabold text-xs ${state.odCategory === c ? "bg-[#f8cb2e]" : "bg-white"}">${c}</button>`).join("")}</div>
+      <div class="prod-grid grid grid-cols-2 gap-3">${items.map((item) => `<article class="prod-card p-3 rounded-2xl bg-white border-2 border-black shadow-[4px_4px_0px_#000]"><div class="produce-art rounded-xl overflow-hidden mb-2">${producePhoto(item)}</div><h3 class="font-extrabold text-sm">${item.name}</h3><p class="text-[10px] font-bold text-gray-600 mb-2">${item.nutri || ""}</p><button type="button" class="btn-add w-full py-2 rounded-xl bg-[#f8cb2e] border-2 border-black font-extrabold text-xs shadow-[2px_2px_0px_#000]" data-od-add="${item.id}">Add ₹${priceForWeight(item.pricePerKg || 50, 500)}</button></article>`).join("")}</div>
     </div>`;
   }
 
@@ -255,13 +209,13 @@
       <section class="panel p-4 rounded-2xl bg-white border-2 border-black shadow-[4px_4px_0px_#000] mb-4">
         <p class="text-xs font-extrabold uppercase text-gray-500 mb-2">Number of Kids / Kits</p>
         <div class="kids-stepper flex items-center gap-3">
-          <button type="button" data-kids="-1" class="step-btn w-10 h-10 rounded-xl bg-yellow-400 border-2 border-black font-extrabold text-lg">−</button>
+          <button type="button" data-kids="-1" class="step-btn w-10 h-10 rounded-xl bg-[#f8cb2e] border-2 border-black font-extrabold text-lg">−</button>
           <div class="kids-count font-extrabold text-lg"><strong>${state.kids}</strong> Kits</div>
-          <button type="button" data-kids="1" class="step-btn w-10 h-10 rounded-xl bg-yellow-400 border-2 border-black font-extrabold text-lg">+</button>
+          <button type="button" data-kids="1" class="step-btn w-10 h-10 rounded-xl bg-[#f8cb2e] border-2 border-black font-extrabold text-lg">+</button>
         </div>
         <div class="seg w-full mt-3 flex gap-2">
-          <button type="button" data-child-mode="double" class="flex-1 py-2 rounded-xl border-2 border-black font-extrabold text-xs ${state.childMode === "double" ? "bg-yellow-400" : "bg-white"}">Double same kits</button>
-          <button type="button" data-child-mode="separate" class="flex-1 py-2 rounded-xl border-2 border-black font-extrabold text-xs ${state.childMode === "separate" ? "bg-yellow-400" : "bg-white"}">Separate kits</button>
+          <button type="button" data-child-mode="double" class="flex-1 py-2 rounded-xl border-2 border-black font-extrabold text-xs ${state.childMode === "double" ? "bg-[#f8cb2e]" : "bg-white"}">Double same kits</button>
+          <button type="button" data-child-mode="separate" class="flex-1 py-2 rounded-xl border-2 border-black font-extrabold text-xs ${state.childMode === "separate" ? "bg-[#f8cb2e]" : "bg-white"}">Separate kits</button>
         </div>
       </section>
       ${state.childMode === "separate" ? Array.from({ length: state.kids }, (_, i) => i + 1).map((kId) => `
@@ -290,14 +244,14 @@
   function renderHome() {
     const panes = { ondemand: renderOnDemandPane, moms: renderMomsPane, family: renderFamilyPane };
     return `<section class="screen with-nav pb-24">
-      <header class="home-header p-4 bg-yellow-300 border-b-2 border-black">
+      <header class="home-header p-4 bg-[#f8cb2e] border-b-2 border-black">
         ${brandRow()}
         <div class="journey-wrap flex justify-between items-center mt-3">
           <button type="button" data-go="hub" class="text-xs font-extrabold bg-black text-white px-3 py-1.5 rounded-lg border border-black shadow-[2px_2px_0px_#fff]">← Hub</button>
           <span class="text-xs font-extrabold uppercase bg-white px-2.5 py-1 rounded-lg border-2 border-black">${MODE_META[state.homeTab]?.label || ""}</span>
         </div>
         <div class="flex gap-2 mt-3">
-          ${MODES.map((m) => `<button type="button" data-home-tab="${m}" class="flex-1 py-2 rounded-xl text-xs font-extrabold border-2 border-black ${state.homeTab === m ? "bg-white shadow-[2px_2px_0px_#000]" : "bg-yellow-200"}">${MODE_META[m].label.split(" ")[0]}</button>`).join("")}
+          ${MODES.map((m) => `<button type="button" data-home-tab="${m}" class="flex-1 py-2 rounded-xl text-xs font-extrabold border-2 border-black ${state.homeTab === m ? "bg-white shadow-[2px_2px_0px_#000]" : "bg-yellow-100"}">${MODE_META[m].label.split(" ")[0]}</button>`).join("")}
         </div>
       </header>
       <div class="p-4">${panes[state.homeTab]?.() || ""}</div>
@@ -330,7 +284,7 @@
 
   function renderSuccess() {
     return `<section class="screen px-6 pt-16 pb-8 items-center text-center flex flex-col justify-center min-h-[90vh]">
-      <div class="w-16 h-16 rounded-full bg-yellow-400 border-2 border-black grid place-items-center text-black mb-4 shadow-[4px_4px_0px_#000] mx-auto">${icon("check")}</div>
+      <div class="w-16 h-16 rounded-full bg-[#f8cb2e] border-2 border-black grid place-items-center text-black mb-4 shadow-[4px_4px_0px_#000] mx-auto">${icon("check")}</div>
       <h1 class="font-display text-3xl font-extrabold">Order Confirmed!</h1>
       <p class="font-mr mt-2 text-green-700 font-bold text-lg">तुमचं हिरवं, स्मार्ट घर</p>
       <button type="button" data-go="hub" class="primary-cta mt-8 w-full h-14 rounded-2xl text-lg">Back to Hub</button>

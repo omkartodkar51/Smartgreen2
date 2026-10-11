@@ -2,7 +2,7 @@
   "use strict";
 
   const MOV = 200;
-  const STORAGE = "smart-green-v5";
+  const STORAGE = "smart-green-v7";
   const GRAMS_PER_KID = 250;
   const MODES = ["ondemand", "moms", "family"];
   const MODE_META = {
@@ -15,41 +15,50 @@
 
   const CATALOG = {
     Staples: [
-      { id: "rice", name: "Sona Masoori Rice", blurb: "Premium rice", pricePerKg: 170, unit: "kg", hue: "#f0e6c8", accent: "#b89b54", photo: img("photo-1586201375761-83865001e31c"), nutri: "Carbs & Energy · Low glycemic index" },
-      { id: "atta", name: "Whole Wheat Atta", blurb: "Stone-ground", pricePerKg: 54, unit: "kg", hue: "#e8d4a8", accent: "#8d6e3a", photo: img("photo-1574323347407-f5e1ad6d020b"), nutri: "High Dietary Fiber · Good for Digestion" },
-      { id: "dal", name: "Toor Dal", blurb: "Protein staple", pricePerKg: 140, unit: "kg", hue: "#f3d27a", accent: "#b8860b", photo: img("photo-1516684732162-798a0062be99"), nutri: "Plant Protein & Iron · Heart Healthy" },
-      { id: "oil", name: "Cold-Pressed Oil", blurb: "Kitchen essential", pricePerKg: 220, unit: "L", hue: "#f7e38a", accent: "#c9a227", photo: img("photo-1474979266404-7eaacbcd87c5"), nutri: "Healthy Fats · Zero Trans Fat" },
+      { id: "rice", name: "Sona Masoori Rice", blurb: "Premium rice", pricePerKg: 170, unit: "kg", photo: img("photo-1586201375761-83865001e31c"), nutri: "Carbs & Energy · Low glycemic index" },
+      { id: "atta", name: "Whole Wheat Atta", blurb: "Stone-ground", pricePerKg: 54, unit: "kg", photo: img("photo-1574323347407-f5e1ad6d020b"), nutri: "High Dietary Fiber · Good for Digestion" },
+      { id: "dal", name: "Toor Dal", blurb: "Protein staple", pricePerKg: 140, unit: "kg", photo: img("photo-1516684732162-798a0062be99"), nutri: "Plant Protein & Iron · Heart Healthy" },
+      { id: "oil", name: "Cold-Pressed Oil", blurb: "Kitchen essential", pricePerKg: 220, unit: "L", photo: img("photo-1474979266404-7eaacbcd87c5"), nutri: "Healthy Fats · Zero Trans Fat" },
     ],
     Veggies: [
-      { id: "lady-finger", name: "Lady Finger", blurb: "Farm fresh", pricePerKg: 60, hue: "#9aaa5a", accent: "#6b7a32", photo: "https://images.pexels.com/photos/1656666/pexels-photo-1656666.jpeg?auto=compress&cs=tinysrgb&w=600", nutri: "Rich in Folate & Vitamin C · Diabetes Friendly", bpSafe: true },
-      { id: "potato", name: "Potato", blurb: "Everyday staple", pricePerKg: 36, hue: "#d4a35a", accent: "#8a6230", photo: img("photo-1518977676601-b53f82aba655"), nutri: "Potassium & Energy · ⚠️ Moderate starch (Caution for strict diabetes)", diabetesWarn: true },
-      { id: "tomato", name: "Tomato", blurb: "Vine ripened", pricePerKg: 48, hue: "#d4543a", accent: "#9a2f1c", photo: img("photo-1592924357228-91a4daadcfea"), nutri: "Lycopene & Antioxidants · Great for Skin & Heart", bpSafe: true },
-      { id: "carrot", name: "Carrot", blurb: "Sweet & crisp", pricePerKg: 52, hue: "#e07a2f", accent: "#a04a12", photo: img("photo-1598170845058-32b9d6a5da37"), nutri: "Beta-Carotene & Vitamin A · Supports Vision", bpSafe: true },
-      { id: "beans", name: "French Beans", blurb: "Tender pods", pricePerKg: 70, hue: "#8a9e4a", accent: "#5a6b28", photo: img("photo-1567375698348-5d9d1edb2e83"), nutri: "Dietary Fiber & Plant Iron · Blood Sugar Regulation", bpSafe: true },
-      { id: "capsicum", name: "Capsicum", blurb: "Crunchy & mild", pricePerKg: 80, hue: "#c9a227", accent: "#8a6a12", photo: img("photo-1563565375-f3fdfdbefa83"), nutri: "Vitamin C & Metabolism Boost", bpSafe: true },
+      { id: "lady-finger", name: "Lady Finger", blurb: "Farm fresh", pricePerKg: 60, photo: "https://images.pexels.com/photos/1656666/pexels-photo-1656666.jpeg?auto=compress&cs=tinysrgb&w=600", nutri: "Rich in Folate & Vitamin C · ✅ Diabetes Friendly", bpSafe: true },
+      { id: "potato", name: "Potato", blurb: "Everyday staple", pricePerKg: 36, photo: img("photo-1518977676601-b53f82aba655"), nutri: "Potassium & Energy · ⚠️ Caution for strict diabetes", diabetesWarn: true },
+      { id: "tomato", name: "Tomato", blurb: "Vine ripened", pricePerKg: 48, photo: img("photo-1592924357228-91a4daadcfea"), nutri: "Lycopene & Antioxidants · ✅ Heart Healthy", bpSafe: true },
+      { id: "carrot", name: "Carrot", blurb: "Sweet & crisp", pricePerKg: 52, photo: img("photo-1598170845058-32b9d6a5da37"), nutri: "Beta-Carotene & Vitamin A · Supports Vision", bpSafe: true },
+      { id: "beans", name: "French Beans", blurb: "Tender pods", pricePerKg: 70, photo: img("photo-1567375698348-5d9d1edb2e83"), nutri: "Dietary Fiber & Plant Iron", bpSafe: true },
+      { id: "capsicum", name: "Capsicum", blurb: "Crunchy & mild", pricePerKg: 80, photo: img("photo-1563565375-f3fdfdbefa83"), nutri: "Vitamin C & Metabolism Boost", bpSafe: true },
     ],
     Fruits: [
-      { id: "banana", name: "Banana", blurb: "Energy fruit", pricePerKg: 55, hue: "#ffe082", accent: "#f9a825", photo: img("photo-1571771894821-ce9b6c11b08e"), nutri: "Potassium & Instant Energy" },
-      { id: "apple", name: "Apple", blurb: "Crisp & juicy", pricePerKg: 180, hue: "#e57373", accent: "#c62828", photo: img("photo-1567306226416-28f0efdc88ce"), nutri: "Pectin Fiber & Low GI · Heart Friendly" },
-      { id: "papaya", name: "Papaya", blurb: "Vitamin rich", pricePerKg: 45, hue: "#ffb74d", accent: "#ef6c00", photo: img("photo-1517282009859-f000ec3b26fe"), nutri: "Papain Enzyme · Excellent for Digestion" },
-      { id: "orange", name: "Orange", blurb: "Fresh citrus", pricePerKg: 90, hue: "#ffa726", accent: "#ef6c00", photo: img("photo-1557800636-894a64c1696f"), nutri: "High Vitamin C & Immunity Support" },
+      { id: "banana", name: "Banana", blurb: "Energy fruit", pricePerKg: 55, photo: img("photo-1571771894821-ce9b6c11b08e"), nutri: "Potassium & Instant Energy" },
+      { id: "apple", name: "Apple", blurb: "Crisp & juicy", pricePerKg: 180, photo: img("photo-1567306226416-28f0efdc88ce"), nutri: "Pectin Fiber & Low GI · Heart Friendly" },
+      { id: "papaya", name: "Papaya", blurb: "Vitamin rich", pricePerKg: 45, photo: img("photo-1517282009859-f000ec3b26fe"), nutri: "Papain Enzyme · Excellent for Digestion" },
     ],
   };
 
   const MOMS_VEG = [
-    { id: "tf-lady", name: "Lady Finger Kit", price: 45, hue: "#9aaa5a", accent: "#6b7a32", photo: "https://images.pexels.com/photos/1656666/pexels-photo-1656666.jpeg?auto=compress&cs=tinysrgb&w=600", nutri: "Folate & Vitamin C for Brain Development" },
-    { id: "tf-spin", name: "Spinach Kit", price: 35, hue: "#8a9e5a", accent: "#556b2f", photo: img("photo-1576045057995-568f588f82fb"), nutri: "Iron & Calcium for Bone & Blood Strength" },
-    { id: "tf-pot", name: "Potato Kit", price: 30, hue: "#d4a35a", accent: "#8a6230", photo: img("photo-1518977676601-b53f82aba655"), nutri: "Energy-dense Carbs for Active Kids" },
-    { id: "tf-tom", name: "Tomato Kit", price: 40, hue: "#d4543a", accent: "#9a2f1c", photo: img("photo-1592924357228-91a4daadcfea"), nutri: "Vitamin C & Antioxidants for Immunity" },
-    { id: "tf-carrot", name: "Carrot Kit", price: 38, hue: "#e07a2f", accent: "#a04a12", photo: img("photo-1598170845058-32b9d6a5da37"), nutri: "Vitamin A for Sharp Vision & Growth" },
-    { id: "tf-beans", name: "Beans Kit", price: 42, hue: "#8a9e4a", accent: "#5a6b28", photo: img("photo-1622206151226-18ca2c9ab4a1"), nutri: "Dietary Fiber & Plant Protein for Muscles" },
+    { id: "tf-lady", name: "Lady Finger Kit", price: 45, photo: "https://images.pexels.com/photos/1656666/pexels-photo-1656666.jpeg?auto=compress&cs=tinysrgb&w=600", nutri: "Folate & Vitamin C for Brain Development" },
+    { id: "tf-spin", name: "Spinach Kit", price: 35, photo: img("photo-1576045057995-568f588f82fb"), nutri: "Iron & Calcium for Strong Bones" },
+    { id: "tf-pot", name: "Potato Kit", price: 30, photo: img("photo-1518977676601-b53f82aba655"), nutri: "Energy-dense Carbs for Active Kids" },
+    { id: "tf-tom", name: "Tomato Kit", price: 40, photo: img("photo-1592924357228-91a4daadcfea"), nutri: "Vitamin C & Antioxidants for Immunity" },
+    { id: "tf-carrot", name: "Carrot Kit", price: 38, photo: img("photo-1598170845058-32b9d6a5da37"), nutri: "Vitamin A for Sharp Vision & Growth" },
+    { id: "tf-beans", name: "Beans Kit", price: 42, photo: img("photo-1622206151226-18ca2c9ab4a1"), nutri: "Dietary Fiber & Plant Protein for Muscles" },
+  ];
+
+  const FAMILY_STAPLES = [
+    { id: "onion", name: "Onion", pricePerKg: 40, photo: img("photo-1518977956812-cd3dbadaafcd"), nutri: "Quercetin & Blood Circulation" },
+    { id: "potato", name: "Potato", pricePerKg: 36, photo: img("photo-1518977676601-b53f82aba655"), nutri: "Potassium & Energy Staple" },
+    { id: "tomato", name: "Tomato", pricePerKg: 48, photo: img("photo-1592924357228-91a4daadcfea"), nutri: "Heart-Healthy Lycopene" },
+  ];
+
+  const ORDERS = [
+    { id: "SG-2401", date: "Fri, 3 Oct", total: 486, status: "In-Transit", items: "Weekly Basket · 12 items" },
+    { id: "SG-2390", date: "Tue, 30 Sep", total: 320, status: "Delivered", items: "Mom’s Kitchen · 2 kids" },
   ];
 
   const state = {
     screen: "splash",
     phone: "",
-    user: { name: "Ananya Rao", phone: "", avatar: "AR", address: "12 Palm Grove, Indiranagar", city: "Bengaluru 560038", wallet: 420 },
-    locationGranted: false,
+    user: { name: "Ananya Rao", avatar: "AR", address: "12 Palm Grove, Bengaluru", wallet: 420 },
     homeTab: "ondemand",
     odCategory: "Veggies",
     kids: 2,
@@ -81,6 +90,7 @@
     home: "Home · Smart Green",
     cart: "Your Cart · Smart Green",
     checkout: "Checkout · Smart Green",
+    success: "Order Confirmed · Smart Green",
     nutri: "Nutri-Tracker · Smart Green",
     orders: "My Orders · Smart Green",
   };
@@ -94,9 +104,7 @@
   function load() {
     try {
       const raw = localStorage.getItem(STORAGE);
-      if (!raw) return;
-      const d = JSON.parse(raw);
-      Object.assign(state, d);
+      if (raw) Object.assign(state, JSON.parse(raw));
     } catch (_) {}
   }
 
@@ -109,7 +117,7 @@
     toast._t = setTimeout(() => { el.hidden = true; el.textContent = ""; }, 2200);
   }
 
-  function showLoader(ms = 150) {
+  function showLoader(ms = 100) {
     if (!loaderEl) return Promise.resolve();
     loaderEl.hidden = false;
     return new Promise((r) => setTimeout(() => { loaderEl.hidden = true; r(); }, ms));
@@ -119,10 +127,11 @@
     document.title = TITLES[state.screen] || TITLES.splash;
   }
 
+  function formatGrams(g) { return g >= 1000 ? `${(g / 1000).toFixed(g % 1000 === 0 ? 0 : 1)}kg` : `${g}g`; }
   function priceForWeight(pricePerKg, grams) { return Math.round(pricePerKg * (grams / 1000)); }
 
   function logoSvg(size = 48) {
-    return `<svg width="${size}" height="${size}" viewBox="0 0 64 64" fill="none"><rect x="8" y="30" width="40" height="22" rx="6" fill="#C4785A"/><rect x="12" y="34" width="32" height="14" rx="3" fill="#F8EBD3"/><circle cx="18" cy="54" r="4" fill="#212529"/><circle cx="38" cy="54" r="4" fill="#212529"/><rect x="28" y="14" width="18" height="26" rx="4" fill="#212529"/></svg>`;
+    return `<svg width="${size}" height="${size}" viewBox="0 0 64 64" fill="none"><rect x="8" y="30" width="40" height="22" rx="6" fill="#F8CB2E"/><rect x="12" y="34" width="32" height="14" rx="3" fill="#111111"/><circle cx="18" cy="54" r="4" fill="#111111"/><circle cx="38" cy="54" r="4" fill="#111111"/><rect x="28" y="14" width="18" height="26" rx="4" fill="#279B37"/></svg>`;
   }
 
   function icon(name) {
@@ -131,10 +140,10 @@
       nutri: `<path d="M12 3v18M7 8c3 0 5 2 5 5s-2 5-5 5M17 8c-3 0-5 2-5 5s2 5 5 5"/>`,
       orders: `<rect x="4" y="5" width="16" height="14" rx="2"/><path d="M8 9h8M8 13h5"/>`,
       cart: `<path d="M3 5h2l2.2 10h9.6L19 8H7"/><circle cx="10" cy="19" r="1.5"/><circle cx="16" cy="19" r="1.5"/>`,
-      pin: `<path d="M12 21s7-5.4 7-11a7 7 0 1 0-14 0c0 5.6 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/>`,
       back: `<path d="M15 5 8 12l7 7"/>`,
+      check: `<path d="M5 12l5 5L20 7"/>`,
     };
-    return `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">${paths[name] || ""}</svg>`;
+    return `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">${paths[name] || ""}</svg>`;
   }
 
   function producePhoto(item) {
@@ -145,13 +154,9 @@
   function cartCount() { return state.cart.reduce((n, i) => n + (i.qty || 1), 0); }
   function itemsBySource(src) { return state.cart.filter((c) => c.source === src); }
   function sectionTotal(src) { return itemsBySource(src).reduce((n, i) => n + ((i.price || 0) * (i.qty || 1)), 0); }
-
   function cartTotals() {
-    const onDemand = sectionTotal("ondemand");
-    const moms = sectionTotal("moms");
-    const family = sectionTotal("family");
-    const subtotal = onDemand + moms + family;
-    return { onDemand, moms, family, subtotal };
+    const subtotal = sectionTotal("ondemand") + sectionTotal("moms") + sectionTotal("family");
+    return { subtotal, movMet: subtotal >= MOV, movShort: Math.max(0, MOV - subtotal) };
   }
 
   function upsertCart(item) {
@@ -171,59 +176,62 @@
   }
 
   function navBar(active) {
-    const tabs = [["hub", "Hub", "home"], ["nutri", "Nutri-Tracker", "nutri"], ["orders", "My Orders", "orders"]];
+    const tabs = [["hub", "Hub", "home"], ["nutri", "Tracker", "nutri"], ["orders", "Orders", "orders"]];
     return `<nav class="bottom-nav">${tabs.map(([id, label, ic]) => `<button type="button" class="nav-item ${active === id ? "active" : ""}" data-go="${id}">${icon(ic)}<span>${label}</span></button>`).join("")}</nav>`;
   }
 
   function brandRow() {
-    return `<div class="brand-row"><div class="brand-left"><div class="logo-mark sm">${logoSvg(26)}</div><div><h1 class="brand-title">Smart Green</h1><p class="font-mr brand-tag">तुमचं हिरवं, स्मार्ट घर</p></div></div></div>`;
+    return `<div class="brand-row flex items-center justify-between"><div class="brand-left flex items-center gap-2"><div class="logo-mark sm">${logoSvg(28)}</div><div><h1 class="brand-title font-extrabold text-lg">Smart Green</h1><p class="font-mr brand-tag text-xs font-bold text-green-700">तुमचं हिरवं, स्मार्ट घर</p></div></div></div>`;
   }
 
   function renderSplash() {
-    return `<section class="screen px-6 pt-14 pb-8 justify-between">
+    return `<section class="screen px-6 pt-14 pb-8 justify-between flex flex-col items-center h-full min-h-[90vh]">
       <div class="flex-1 flex flex-col items-center justify-center text-center">
-        <div class="logo-mark mb-5" style="width:92px;height:92px;border-radius:28px">${logoSvg(58)}</div>
-        <h1 class="font-display text-4xl font-semibold">Smart Green</h1>
-        <p class="font-mr mt-2 text-lg font-bold text-terra-deep">तुमचं हिरवं, स्मार्ट घर</p>
+        <div class="logo-mark mb-5" style="width:92px;height:92px;border-radius:28px">${logoSvg(56)}</div>
+        <h1 class="font-display text-4xl font-extrabold text-black">Smart Green</h1>
+        <p class="font-mr mt-2 text-lg font-extrabold text-green-700">तुमचं हिरवं, स्मार्ट घर</p>
       </div>
-      <button type="button" data-go="login" class="w-full h-14 rounded-2xl bg-terra text-white font-extrabold text-lg">Get Started</button>
+      <button type="button" data-go="login" class="primary-cta w-full h-14 rounded-2xl text-lg">Get Started</button>
     </section>`;
   }
 
   function renderLogin() {
     return `<section class="screen px-5 pt-8 pb-8">
       ${brandRow()}
-      <h2 class="font-display text-2xl font-semibold mt-4">Welcome back</h2>
-      <div class="mt-6"><input id="phoneInput" type="tel" maxlength="10" placeholder="Mobile number" class="w-full h-14 px-4 rounded-xl border border-black/10 text-lg font-bold" value="${state.phone}" /></div>
-      <button type="button" id="sendOtp" class="mt-5 w-full h-14 rounded-2xl bg-peach text-ink font-extrabold text-lg">Send OTP</button>
+      <h2 class="font-display text-2xl font-extrabold mt-4">Welcome back</h2>
+      <div class="mt-6"><input id="phoneInput" type="tel" maxlength="10" placeholder="Mobile number" class="w-full h-14 px-4 rounded-xl border-2 border-black text-lg font-extrabold bg-white" value="${state.phone}" /></div>
+      <button type="button" id="sendOtp" class="primary-cta mt-5 w-full h-14 rounded-2xl text-lg">Send OTP</button>
     </section>`;
   }
 
   function renderOtp() {
     return `<section class="screen px-5 pt-8 pb-8">
-      <h1 class="font-display text-3xl font-semibold">Enter OTP</h1>
-      <p class="mt-2 text-ink-mute">Demo OTP: 1234</p>
-      <div class="mt-6"><input id="otpInput" type="text" maxlength="4" placeholder="1234" class="w-full h-14 px-4 rounded-xl border border-black/10 text-center text-2xl font-extrabold" /></div>
-      <button type="button" id="verifyOtp" class="mt-6 w-full h-14 rounded-2xl bg-terra text-white font-extrabold text-lg">Verify & Continue</button>
+      <h1 class="font-display text-3xl font-extrabold">Enter OTP</h1>
+      <p class="mt-2 font-bold text-gray-700">Demo OTP: 1234</p>
+      <div class="mt-6"><input id="otpInput" type="text" maxlength="4" placeholder="1234" class="w-full h-14 px-4 rounded-xl border-2 border-black text-center text-2xl font-extrabold bg-white" /></div>
+      <button type="button" id="verifyOtp" class="primary-cta mt-6 w-full h-14 rounded-2xl text-lg">Verify & Continue</button>
     </section>`;
   }
 
   function renderHub() {
-    return `<section class="screen with-nav px-5 pt-6 pb-12">
+    return `<section class="screen with-nav px-5 pt-6 pb-20">
       ${brandRow()}
-      <h1 class="font-display text-2xl font-semibold mt-4 mb-4">What would you like to plan?</h1>
+      <h1 class="font-display text-2xl font-extrabold mt-4 mb-4">What would you like to plan?</h1>
       <div class="space-y-4">
-        <button type="button" data-hub-mode="ondemand" class="w-full text-left p-4 rounded-2xl bg-white border border-black/10 shadow-card block">
-          <span class="text-xs font-extrabold uppercase text-amber-deep">⚡ Express Shopping</span>
-          <h2 class="font-display text-xl font-semibold mt-1">On-Demand Grocery</h2>
+        <button type="button" data-hub-mode="ondemand" class="hub-box w-full text-left p-4 rounded-2xl block">
+          <span class="text-xs font-extrabold uppercase bg-yellow-400 px-2 py-0.5 rounded border border-black">⚡ Express</span>
+          <h2 class="font-display text-xl font-extrabold mt-2">On-Demand Grocery</h2>
+          <p class="text-sm font-bold text-gray-700 mt-1">Pick exact fresh veggies & staples with ₹200 MOV.</p>
         </button>
-        <button type="button" data-hub-mode="moms" class="w-full text-left p-4 rounded-2xl bg-white border border-black/10 shadow-card block">
-          <span class="text-xs font-extrabold uppercase text-amber-deep">👧 Kids Special & Tiffins</span>
-          <h2 class="font-display text-xl font-semibold mt-1">Mom’s Kitchen</h2>
+        <button type="button" data-hub-mode="moms" class="hub-box w-full text-left p-4 rounded-2xl block">
+          <span class="text-xs font-extrabold uppercase bg-green-200 px-2 py-0.5 rounded border border-black">👧 Kids Special</span>
+          <h2 class="font-display text-xl font-extrabold mt-2">Mom’s Kitchen</h2>
+          <p class="text-sm font-bold text-gray-700 mt-1">Multi-child weekly veggie kits with separate customizer.</p>
         </button>
-        <button type="button" data-hub-mode="family" class="w-full text-left p-4 rounded-2xl bg-white border border-black/10 shadow-card block">
-          <span class="text-xs font-extrabold uppercase text-amber-deep">🩺 Health-Smart Family Basket</span>
-          <h2 class="font-display text-xl font-semibold mt-1">Family Kitchen</h2>
+        <button type="button" data-hub-mode="family" class="hub-box w-full text-left p-4 rounded-2xl block">
+          <span class="text-xs font-extrabold uppercase bg-orange-200 px-2 py-0.5 rounded border border-black">🩺 Health-Smart</span>
+          <h2 class="font-display text-xl font-extrabold mt-2">Family Kitchen</h2>
+          <p class="text-sm font-bold text-gray-700 mt-1">Weekly family basket with Diabetes & BP health tags.</p>
         </button>
       </div>
       ${navBar("hub")}
@@ -233,71 +241,120 @@
   function renderOnDemandPane() {
     const items = CATALOG[state.odCategory] || [];
     return `<div class="mode-pane">
-      <div class="pill-scroll mb-3">${Object.keys(CATALOG).map((c) => `<button type="button" data-od-cat="${c}" class="cat-pill ${state.odCategory === c ? "active" : ""}">${c}</button>`).join("")}</div>
-      <div class="prod-grid">${items.map((item) => `<article class="prod-card"><div class="produce-art">${producePhoto(item)}</div><h3 class="prod-name">${item.name}</h3><button type="button" class="btn-add" data-od-add="${item.id}">Add ₹${priceForWeight(item.pricePerKg || 50, 500)}</button></article>`).join("")}</div>
+      <div class="pill-scroll mb-3 flex gap-2 overflow-x-auto pb-1">${Object.keys(CATALOG).map((c) => `<button type="button" data-od-cat="${c}" class="cat-pill px-3 py-1.5 rounded-xl border-2 border-black font-extrabold text-xs ${state.odCategory === c ? "bg-yellow-400" : "bg-white"}">${c}</button>`).join("")}</div>
+      <div class="prod-grid grid grid-cols-2 gap-3">${items.map((item) => `<article class="prod-card p-3 rounded-2xl bg-white border-2 border-black shadow-[4px_4px_0px_#000]"><div class="produce-art rounded-xl overflow-hidden mb-2">${producePhoto(item)}</div><h3 class="font-extrabold text-sm">${item.name}</h3><p class="text-[10px] font-bold text-gray-600 mb-2">${item.nutri || ""}</p><button type="button" class="btn-add w-full py-2 rounded-xl bg-yellow-400 border-2 border-black font-extrabold text-xs shadow-[2px_2px_0px_#000]" data-od-add="${item.id}">Add ₹${priceForWeight(item.pricePerKg || 50, 500)}</button></article>`).join("")}</div>
     </div>`;
   }
 
   function renderMomsPane() {
     return `<div class="mode-pane">
-      <div class="mode-hero"><h2>Mom’s Kitchen</h2><p>Kids’ weekly veggie kits</p></div>
-      <section class="panel">
-        <p class="panel-kicker">Number of Kids / Kits</p>
-        <div class="kids-stepper">
-          <button type="button" data-kids="-1" class="step-btn">−</button>
-          <div class="kids-count"><strong>${state.kids}</strong><span>Kits</span></div>
-          <button type="button" data-kids="1" class="step-btn">+</button>
+      <div class="mode-hero p-4 rounded-2xl bg-green-100 border-2 border-black mb-4 shadow-[4px_4px_0px_#000]">
+        <h2 class="font-display text-xl font-extrabold">Mom’s Kitchen</h2>
+        <p class="text-xs font-bold text-gray-700">Kids’ weekly veggie kits with custom options</p>
+      </div>
+      <section class="panel p-4 rounded-2xl bg-white border-2 border-black shadow-[4px_4px_0px_#000] mb-4">
+        <p class="text-xs font-extrabold uppercase text-gray-500 mb-2">Number of Kids / Kits</p>
+        <div class="kids-stepper flex items-center gap-3">
+          <button type="button" data-kids="-1" class="step-btn w-10 h-10 rounded-xl bg-yellow-400 border-2 border-black font-extrabold text-lg">−</button>
+          <div class="kids-count font-extrabold text-lg"><strong>${state.kids}</strong> Kits</div>
+          <button type="button" data-kids="1" class="step-btn w-10 h-10 rounded-xl bg-yellow-400 border-2 border-black font-extrabold text-lg">+</button>
         </div>
-        <div class="seg w-full mt-3 flex">
-          <button type="button" data-child-mode="double" class="flex-1 ${state.childMode === "double" ? "on" : ""}">Double same kits</button>
-          <button type="button" data-child-mode="separate" class="flex-1 ${state.childMode === "separate" ? "on" : ""}">Separate kits</button>
+        <div class="seg w-full mt-3 flex gap-2">
+          <button type="button" data-child-mode="double" class="flex-1 py-2 rounded-xl border-2 border-black font-extrabold text-xs ${state.childMode === "double" ? "bg-yellow-400" : "bg-white"}">Double same kits</button>
+          <button type="button" data-child-mode="separate" class="flex-1 py-2 rounded-xl border-2 border-black font-extrabold text-xs ${state.childMode === "separate" ? "bg-yellow-400" : "bg-white"}">Separate kits</button>
         </div>
       </section>
       ${state.childMode === "separate" ? Array.from({ length: state.kids }, (_, i) => i + 1).map((kId) => `
-        <section class="panel border border-terra mb-3">
-          <input type="text" class="font-display text-lg font-semibold bg-transparent border-b border-terra/30 w-full mb-2" value="${state.childNames[kId] || `Kit ${kId}`}" data-kit-name-input="${kId}" />
-          <div class="kit-grid">${MOMS_VEG.map((item) => `<button type="button" data-moms-sep-toggle="${kId}:${item.id}" class="kit-card ${state.childSeparateVeggies[kId]?.[item.id] ? "selected" : ""}"><p class="kit-name">${item.name}</p></button>`).join("")}</div>
+        <section class="panel p-4 rounded-2xl bg-white border-2 border-black shadow-[4px_4px_0px_#000] mb-3">
+          <input type="text" class="font-display text-base font-extrabold bg-gray-50 border-2 border-black p-2 rounded-xl w-full mb-3" value="${state.childNames[kId] || `Kit ${kId}`}" data-kit-name-input="${kId}" />
+          <div class="kit-grid grid grid-cols-2 gap-2">${MOMS_VEG.map((item) => `<button type="button" data-moms-sep-toggle="${kId}:${item.id}" class="kit-card p-2 rounded-xl border-2 border-black text-left text-xs font-extrabold ${state.childSeparateVeggies[kId]?.[item.id] ? "bg-green-300" : "bg-white"}"><p>${item.name}</p></button>`).join("")}</div>
         </section>`).join("") : `
-        <section class="panel">
-          <div class="kit-grid">${MOMS_VEG.map((item) => `<button type="button" data-moms-toggle="${item.id}" class="kit-card ${state.cart.find((c) => c.key === `moms:${item.id}`) ? "selected" : ""}"><p class="kit-name">${item.name}</p></button>`).join("")}</div>
+        <section class="panel p-4 rounded-2xl bg-white border-2 border-black shadow-[4px_4px_0px_#000]">
+          <div class="kit-grid grid grid-cols-2 gap-2">${MOMS_VEG.map((item) => `<button type="button" data-moms-toggle="${item.id}" class="kit-card p-2 rounded-xl border-2 border-black text-left text-xs font-extrabold ${state.cart.find((c) => c.key === `moms:${item.id}`) ? "bg-green-300" : "bg-white"}"><p>${item.name}</p></button>`).join("")}</div>
         </section>`}
     </div>`;
   }
 
   function renderFamilyPane() {
     return `<div class="mode-pane">
-      <div class="mode-hero"><h2>Family Kitchen</h2><p>Weekly Family Basket with Health Tags</p></div>
-      <section class="panel">
-        <div class="kit-grid">${CATALOG.Veggies.map((v) => `<button type="button" data-fam-veg="${v.id}" class="kit-card ${state.family.veggies[v.id] ? "selected" : ""}"><p class="kit-name">${v.name}</p><small class="text-[10px] text-ink-mute">${v.nutri}</small></button>`).join("")}</div>
+      <div class="mode-hero p-4 rounded-2xl bg-orange-100 border-2 border-black mb-4 shadow-[4px_4px_0px_#000]">
+        <h2 class="font-display text-xl font-extrabold">Family Kitchen</h2>
+        <p class="text-xs font-bold text-gray-700">Weekly family basket with health tags</p>
+      </div>
+      <section class="panel p-4 rounded-2xl bg-white border-2 border-black shadow-[4px_4px_0px_#000]">
+        <div class="kit-grid grid gap-3">${CATALOG.Veggies.map((v) => `<button type="button" data-fam-veg="${v.id}" class="kit-card p-3 rounded-xl border-2 border-black text-left ${state.family.veggies[v.id] ? "bg-orange-200" : "bg-white"}"><p class="font-extrabold text-sm">${v.name}</p><small class="text-[11px] font-bold text-gray-700 block mt-1">${v.nutri}</small></button>`).join("")}</div>
       </section>
     </div>`;
   }
 
   function renderHome() {
     const panes = { ondemand: renderOnDemandPane, moms: renderMomsPane, family: renderFamilyPane };
-    return `<section class="screen with-nav">
-      <header class="home-header">
+    return `<section class="screen with-nav pb-24">
+      <header class="home-header p-4 bg-yellow-300 border-b-2 border-black">
         ${brandRow()}
-        <div class="journey-wrap flex justify-between px-1 mt-2">
-          <button type="button" data-go="hub" class="text-xs font-extrabold text-terra">← Hub</button>
-          <span class="text-xs font-bold text-ink-mute">${MODE_META[state.homeTab]?.label || ""}</span>
+        <div class="journey-wrap flex justify-between items-center mt-3">
+          <button type="button" data-go="hub" class="text-xs font-extrabold bg-black text-white px-3 py-1.5 rounded-lg border border-black shadow-[2px_2px_0px_#fff]">← Hub</button>
+          <span class="text-xs font-extrabold uppercase bg-white px-2.5 py-1 rounded-lg border-2 border-black">${MODE_META[state.homeTab]?.label || ""}</span>
         </div>
-        <div class="flex gap-2 mt-2 px-1">
-          ${MODES.map((m) => `<button type="button" data-home-tab="${m}" class="flex-1 py-1.5 rounded-lg text-xs font-bold ${state.homeTab === m ? "bg-terra text-white" : "bg-black/5 text-ink"}">${MODE_META[m].label.split(" ")[0]}</button>`).join("")}
+        <div class="flex gap-2 mt-3">
+          ${MODES.map((m) => `<button type="button" data-home-tab="${m}" class="flex-1 py-2 rounded-xl text-xs font-extrabold border-2 border-black ${state.homeTab === m ? "bg-white shadow-[2px_2px_0px_#000]" : "bg-yellow-200"}">${MODE_META[m].label.split(" ")[0]}</button>`).join("")}
         </div>
       </header>
       <div class="p-4">${panes[state.homeTab]?.() || ""}</div>
+      <div class="p-4"><button type="button" data-go="cart" class="primary-cta w-full h-14 rounded-2xl text-lg shadow-[4px_4px_0px_#000]">View Cart (${cartCount()} items)</button></div>
       ${navBar("hub")}
     </section>`;
   }
 
   function renderCart() {
     const t = cartTotals();
-    return `<section class="screen px-5 pt-6 pb-8">
-      <button type="button" data-go="hub" class="text-terra font-extrabold mb-4">← Back to Hub</button>
-      <h1 class="font-display text-3xl font-semibold">Your Cart</h1>
-      <p class="mt-2 text-ink-mute">${cartCount()} items · Total ₹${t.subtotal}</p>
-      <button type="button" data-go="hub" class="mt-6 w-full h-14 rounded-2xl bg-terra text-white font-extrabold text-lg">Continue Shopping</button>
+    return `<section class="screen px-5 pt-6 pb-12">
+      <button type="button" data-go="hub" class="text-xs font-extrabold bg-black text-white px-3 py-1.5 rounded-lg mb-4">← Back to Hub</button>
+      <h1 class="font-display text-3xl font-extrabold">Your Cart</h1>
+      <p class="mt-2 font-bold text-gray-700">${cartCount()} items · Total ₹${t.subtotal}</p>
+      <div class="mt-6 space-y-3">
+        ${state.cart.map((c) => `<div class="p-3 bg-white border-2 border-black rounded-xl flex justify-between items-center shadow-[2px_2px_0px_#000]"><span class="font-extrabold text-sm">${c.name}</span><button type="button" data-remove="${c.key}" class="text-xs font-extrabold text-red-600 bg-red-100 px-2 py-1 rounded border border-red-300">Remove</button></div>`).join("")}
+      </div>
+      <button type="button" data-go="checkout" class="primary-cta mt-6 w-full h-14 rounded-2xl text-lg">Proceed to Checkout</button>
+    </section>`;
+  }
+
+  function renderCheckout() {
+    return `<section class="screen px-5 pt-6 pb-12">
+      <button type="button" data-go="cart" class="text-xs font-extrabold bg-black text-white px-3 py-1.5 rounded-lg mb-4">← Back to Cart</button>
+      <h1 class="font-display text-3xl font-extrabold">Checkout</h1>
+      <p class="mt-2 font-bold text-gray-700">Delivering to: ${state.user.address}</p>
+      <button type="button" data-go="success" class="primary-cta mt-6 w-full h-14 rounded-2xl text-lg">Pay & Confirm Order</button>
+    </section>`;
+  }
+
+  function renderSuccess() {
+    return `<section class="screen px-6 pt-16 pb-8 items-center text-center flex flex-col justify-center min-h-[90vh]">
+      <div class="w-16 h-16 rounded-full bg-yellow-400 border-2 border-black grid place-items-center text-black mb-4 shadow-[4px_4px_0px_#000] mx-auto">${icon("check")}</div>
+      <h1 class="font-display text-3xl font-extrabold">Order Confirmed!</h1>
+      <p class="font-mr mt-2 text-green-700 font-bold text-lg">तुमचं हिरवं, स्मार्ट घर</p>
+      <button type="button" data-go="hub" class="primary-cta mt-8 w-full h-14 rounded-2xl text-lg">Back to Hub</button>
+    </section>`;
+  }
+
+  function renderNutri() {
+    return `<section class="screen with-nav px-4 pt-6 pb-20">
+      <h1 class="font-display text-3xl font-extrabold mb-4">Nutri-Tracker</h1>
+      <div class="p-4 bg-white border-2 border-black rounded-2xl shadow-[4px_4px_0px_#000]">
+        <p class="font-extrabold text-lg">Green Champion Points</p>
+        <p class="text-2xl font-extrabold text-green-600 mt-2">1,240 pts</p>
+      </div>
+      ${navBar("nutri")}
+    </section>`;
+  }
+
+  function renderOrders() {
+    return `<section class="screen with-nav px-4 pt-6 pb-20">
+      <h1 class="font-display text-3xl font-extrabold mb-4">My Orders</h1>
+      <div class="space-y-3">
+        ${ORDERS.map((o) => `<div class="p-4 bg-white border-2 border-black rounded-2xl shadow-[4px_4px_0px_#000]"><div class="flex justify-between"><strong>${o.id}</strong><span class="text-xs bg-green-200 px-2 py-0.5 rounded border border-black">${o.status}</span></div><p class="text-xs text-gray-600 mt-1">${o.date} ·${o.items}</p><p class="font-extrabold mt-2">₹${o.total}</p></div>`).join("")}
+      </div>
+      ${navBar("orders")}
     </section>`;
   }
 
@@ -307,11 +364,16 @@
   }
 
   function render() {
-    const map = { splash: renderSplash, login: renderLogin, otp: renderOtp, hub: renderHub, home: renderHome, cart: renderCart, nutri: renderMomsPane, orders: renderMomsPane };
+    const map = {
+      splash: renderSplash, login: renderLogin, otp: renderOtp, hub: renderHub, home: renderHome,
+      cart: renderCart, checkout: renderCheckout, success: renderSuccess, nutri: renderNutri, orders: renderOrders
+    };
     screensEl.innerHTML = (map[state.screen] || renderSplash)();
     setTitle();
     bind();
   }
+
+  function setTitle() { document.title = TITLES[state.screen] || "Smart Green"; }
 
   function bind() {
     screensEl.querySelectorAll("[data-go]").forEach((btn) => btn.addEventListener("click", () => go(btn.dataset.go)));
@@ -350,7 +412,17 @@
       btn.addEventListener("click", () => { state.odCategory = btn.dataset.odCat; scheduleRender(); });
     });
     screensEl.querySelectorAll("[data-od-add]").forEach((btn) => {
-      btn.addEventListener("click", () => { toast("Added to cart"); go("cart"); });
+      btn.addEventListener("click", () => {
+        const id = btn.dataset.odAdd;
+        const item = CATALOG.Veggies.concat(CATALOG.Staples).find((x) => x.id === id);
+        if (item) {
+          upsertCart({ key: `od:${id}`, id, name: item.name, source: "ondemand", price: priceForWeight(item.pricePerKg || 50, 500), qty: 1 });
+          toast("Added to cart");
+        }
+      });
+    });
+    screensEl.querySelectorAll("[data-remove]").forEach((btn) => {
+      btn.addEventListener("click", () => { removeCart(btn.dataset.remove); render(); });
     });
     screensEl.querySelectorAll("[data-fam-veg]").forEach((btn) => {
       btn.addEventListener("click", () => {
@@ -362,6 +434,6 @@
   }
 
   load();
-  if (state.phone && state.locationGranted) state.screen = "hub";
+  if (state.phone) state.screen = "hub";
   scheduleRender();
 })();

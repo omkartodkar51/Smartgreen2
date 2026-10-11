@@ -1,14 +1,9 @@
 (() => {
   "use strict";
 
-  const MOV = 200;
-  const STORAGE = "smart-green-v5-dark";
-  const GRAMS_PER_KIT = 500;
-  const MODES = ["hub", "ondemand", "moms", "family"];
-
+  const STORAGE = "smart-green-v6-dark";
   const TEXTS = {
     en: {
-      tagline: "Pack to Pan, As Healthy as You Can",
       marathiTag: "तुमचं हिरवं, स्मार्ट घर",
       selectOption: "Choose Your Order Mode",
       odTitle: "Express On-Demand",
@@ -20,7 +15,6 @@
       nutriSummary: "Nutritional Content Added:",
     },
     mr: {
-      tagline: "पॅक टू पॅन, जितके निरोगी तितके सोपे",
       marathiTag: "तुमचं हिरवं, स्मार्ट घर",
       selectOption: "तुमचा ऑर्डर मोड निवडा",
       odTitle: "एक्सप्रेस ऑन-डिमांड",
@@ -36,12 +30,16 @@
   const img = (id) => `https://images.unsplash.com/${id}?auto=format&fit=crop&w=600&q=80`;
 
   const CATALOG = {
+    Staples: [
+      { id: "rice", name: "Sona Masoori Rice", pricePerKg: 170, photo: img("photo-1586201375761-83865001e31c"), nutri: { iron: "1.2mg", fiber: "1.0g", cal: "130 kcal" } },
+      { id: "atta", name: "Whole Wheat Atta", pricePerKg: 54, photo: img("photo-1574323347407-f5e1ad6d020b"), nutri: { iron: "3.5mg", fiber: "10.7g", cal: "340 kcal" } },
+      { id: "dal", name: "Toor Dal", pricePerKg: 140, photo: img("photo-1516684732162-798a0062be99"), nutri: { iron: "5.1mg", fiber: "15.0g", cal: "343 kcal" } },
+    ],
     Veggies: [
       { id: "lady-finger", name: "Lady Finger", pricePerKg: 60, photo: "https://images.pexels.com/photos/1656666/pexels-photo-1656666.jpeg?auto=compress&cs=tinysrgb&w=600", nutri: { iron: "2.1mg", fiber: "3.2g", cal: "33 kcal" } },
       { id: "potato", name: "Potato", pricePerKg: 36, photo: img("photo-1518977676601-b53f82aba655"), nutri: { iron: "0.8mg", fiber: "2.2g", cal: "77 kcal" } },
       { id: "tomato", name: "Tomato", pricePerKg: 48, photo: img("photo-1592924357228-91a4daadcfea"), nutri: { iron: "0.5mg", fiber: "1.2g", cal: "18 kcal" } },
       { id: "carrot", name: "Carrot", pricePerKg: 52, photo: img("photo-1598170845058-32b9d6a5da37"), nutri: { iron: "0.3mg", fiber: "2.8g", cal: "41 kcal" } },
-      { id: "spinach", name: "Spinach", pricePerKg: 40, photo: img("photo-1576045057995-568f588f82fb"), nutri: { iron: "2.7mg", fiber: "2.2g", cal: "23 kcal" } },
     ],
     Fruits: [
       { id: "banana", name: "Banana", pricePerKg: 55, photo: img("photo-1571771894821-ce9b6c11b08e"), nutri: { iron: "0.3mg", fiber: "2.6g", cal: "89 kcal" } },
@@ -50,6 +48,10 @@
     Sprouts: [
       { id: "moong", name: "Moong Sprouts", pricePerKg: 120, photo: img("photo-1540420773420-3366772f4999"), nutri: { iron: "1.4mg", fiber: "1.8g", cal: "30 kcal" } },
       { id: "chana", name: "Chana Sprouts", pricePerKg: 110, photo: img("photo-1615485290382-441e4d049cb5"), nutri: { iron: "2.8mg", fiber: "3.5g", cal: "120 kcal" } },
+    ],
+    Aromatics: [
+      { id: "coriander", name: "Coriander", pricePerKg: 40, photo: img("photo-1459411621453-7b03977f4bfc"), nutri: { iron: "1.8mg", fiber: "2.0g", cal: "23 kcal" } },
+      { id: "ginger", name: "Ginger", pricePerKg: 160, photo: img("photo-1599940824399-b87987ceb72a"), nutri: { iron: "0.6mg", fiber: "2.0g", cal: "80 kcal" } },
     ]
   };
 
@@ -60,11 +62,11 @@
     user: { name: "Ananya Rao", avatar: "AR", address: "12 Palm Grove, Indiranagar", wallet: 420 },
     locationGranted: false,
     homeTab: "hub",
+    odCategory: "Veggies",
     numKits: 1,
-    kitMode: "same",
+    kitMode: "same", // 'same' or 'separate'
     cart: [],
     profileOpen: false,
-    delivery: { ondemand: "same-day", moms: "sun", family: "tue" },
   };
 
   const $ = (sel) => document.querySelector(sel);
@@ -140,7 +142,7 @@
           <p style="font-size:11px;color:var(--amber);margin:0;">${t.marathiTag}</p></div>
       </div>
       <div style="display:flex;gap:8px;align-items:center;">
-        <button type="button" class="lang-btn" id="toggleLang">${state.lang === "en" ? "मराठी" : "ENG"}</button>
+        <button type="button" class="lang-btn ${state.lang==='mr'?'active':''}" id="toggleLang">${state.lang === "en" ? "मराठी" : "ENG"}</button>
         <button type="button" id="openProfile" style="width:34px;height:34px;border-radius:999px;background:var(--amber);color:#121212;font-weight:800;border:none;">${state.user.avatar}</button>
       </div>
     </div>`;
@@ -153,7 +155,6 @@
         <div class="logo-mark mb-5" style="width:92px;height:92px;border-radius:28px">${logoSvg(58)}</div>
         <h1 class="text-4xl font-extrabold text-white">Smart Green</h1>
         <p class="mt-2 text-lg font-bold text-amber">${t.marathiTag}</p>
-        <p class="mt-1 text-sm font-semibold text-ink-mute">${t.tagline}</p>
       </div>
       <button type="button" data-go="login" class="primary-cta yellow">Get Started</button>
     </section>`;
@@ -202,12 +203,12 @@
         <ul class="hub-bullets">${t.odBullets.map(b => `<li>${b}</li>`).join("")}</ul>
       </div>
 
-      <div class="hub-card orange-border" data-select-mode="moms">
+      <div class="hub-card" data-select-mode="moms">
         <div class="hub-title"><span style="color:var(--peach)">🍱 ${t.momsTitle}</span><span style="color:var(--peach)">➔</span></div>
         <ul class="hub-bullets">${t.momsBullets.map(b => `<li>${b}</li>`).join("")}</ul>
       </div>
 
-      <div class="hub-card green-border" data-select-mode="family">
+      <div class="hub-card" data-select-mode="family">
         <div class="hub-title"><span style="color:#4ade80">🧺 ${t.familyTitle}</span><span style="color:#4ade80">➔</span></div>
         <ul class="hub-bullets">${t.familyBullets.map(b => `<li>${b}</li>`).join("")}</ul>
       </div>
@@ -215,21 +216,25 @@
   }
 
   function renderOnDemand() {
-    const items = CATALOG.Veggies;
+    const cats = Object.keys(CATALOG);
+    const items = CATALOG[state.odCategory] || [];
     return `<div class="mode-pane">
-      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;">
-        <h2 style="font-size:18px;font-weight:800;color:#fff;margin:0;">On-Demand Veggies</h2>
-        <button type="button" data-select-mode="hub" style="color:var(--amber);background:none;border:none;font-weight:800;">← Back to Hub</button>
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
+        <h2 style="font-size:18px;font-weight:800;color:#fff;margin:0;">On-Demand Stock</h2>
+        <button type="button" data-select-mode="hub" style="color:var(--amber);background:none;border:none;font-weight:800;">← Hub</button>
+      </div>
+      <div class="pill-scroll">
+        ${cats.map(c => `<button type="button" data-od-cat="${c}" class="cat-pill ${state.odCategory === c ? 'active' : ''}">${c}</button>`).join("")}
       </div>
       <div class="prod-grid">${items.map(v => {
         const inCart = state.cart.some(c => c.id === v.id);
         return `<div class="prod-card">
-          <div class="produce-art">${producePhoto(v)}</div>
+          <div class="produce-art"><img class="produce-img" src="${v.photo}" alt="${v.name}" /></div>
           <div class="prod-body">
             <p class="prod-name">${v.name}</p>
-            <span class="nutri-tag">⚡ ${v.nutri.iron} Iron \vert{}${v.nutri.cal}</span>
+            <span class="nutri-tag">⚡ ${v.nutri.iron} \vert{}${v.nutri.cal}</span>
             <p class="prod-price">₹${v.pricePerKg}/kg</p>
-            <button type="button" class="btn-add ${inCart ? 'added' : ''}" data-add-cart="${v.id}">${inCart ? '✓ Added' : 'Add to Cart'}</button>
+            <button type="button" class="btn-add ${inCart ? 'added' : ''}" data-add-cart="${v.id}">${inCart ? '✓ Added' : 'Add'}</button>
           </div>
         </div>`;
       }).join("")}</div>
@@ -240,7 +245,7 @@
     return `<div class="mode-pane">
       <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;">
         <h2 style="font-size:18px;font-weight:800;color:#fff;margin:0;">Mom's Kitchen Kits</h2>
-        <button type="button" data-select-mode="hub" style="color:var(--amber);background:none;border:none;font-weight:800;">← Back to Hub</button>
+        <button type="button" data-select-mode="hub" style="color:var(--amber);background:none;border:none;font-weight:800;">← Hub</button>
       </div>
       
       <div class="panel">
@@ -250,16 +255,19 @@
           <strong style="font-size:22px;color:var(--amber);">${state.numKits} Kit(s)</strong>
           <button type="button" id="incKits" style="width:38px;height:38px;border-radius:999px;background:#121212;color:#fff;border:1px solid var(--border-soft);font-size:18px;">+</button>
         </div>
-        ${state.numKits > 1 ? `<div style="margin-top:12px;display:flex;gap:10px;">
-          <button type="button" class="lang-btn ${state.kitMode==='same'?'active':''}" id="kitSame">Same Content</button>
-          <button type="button" class="lang-btn ${state.kitMode==='custom'?'active':''}" id="kitCustom">Custom Content</button>
+        ${state.numKits > 1 ? `<div style="margin-top:12px;">
+          <p class="panel-kicker" style="margin-bottom:6px;">Kit Content Preference</p>
+          <div style="display:flex;gap:10px;">
+            <button type="button" class="lang-btn ${state.kitMode==='same'?'active':''}" id="kitSame">Same Content (सर्व किट्स सारख्या)</button>
+            <button type="button" class="lang-btn ${state.kitMode==='separate'?'active':''}" id="kitSeparate">Separate / Custom (वेगवेगळी)</button>
+          </div>
         </div>` : ''}
       </div>
 
       <p class="panel-kicker" style="margin-top:14px;">Horizontal Veggie Selection (Choose 6)</p>
       <div class="horizontal-card-scroll">
-        ${CATALOG.Veggies.map(v => `<div class="h-card">
-          <div class="produce-art mini">${producePhoto(v)}</div>
+        ${CATALOG.Veggies.map(v => `<div class="h-card selected">
+          <div class="produce-art mini"><img class="produce-img" src="${v.photo}" alt="${v.name}" /></div>
           <p style="font-size:12px;font-weight:800;color:#fff;margin:4px 0 0 0;">${v.name}</p>
           <span class="nutri-tag">${v.nutri.iron}</span>
         </div>`).join("")}
@@ -273,13 +281,13 @@
     return `<div class="mode-pane">
       <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;">
         <h2 style="font-size:18px;font-weight:800;color:#fff;margin:0;">Family Basket</h2>
-        <button type="button" data-select-mode="hub" style="color:var(--amber);background:none;border:none;font-weight:800;">← Back to Hub</button>
+        <button type="button" data-select-mode="hub" style="color:var(--amber);background:none;border:none;font-weight:800;">← Hub</button>
       </div>
 
-      <p class="panel-kicker">Weekly Staples & Veggies (Slide to Choose)</p>
+      <p class="panel-kicker">Weekly Staples & Veggies (Slide Horizontally)</p>
       <div class="horizontal-card-scroll">
-        ${CATALOG.Veggies.concat(CATALOG.Sprouts).map(v => `<div class="h-card selected">
-          <div class="produce-art mini">${producePhoto(v)}</div>
+        ${CATALOG.Veggies.concat(CATALOG.Sprouts, CATALOG.Staples).map(v => `<div class="h-card selected">
+          <div class="produce-art mini"><img class="produce-img" src="${v.photo}" alt="${v.name}" /></div>
           <p style="font-size:12px;font-weight:800;color:#fff;margin:4px 0 0 0;">${v.name}</p>
           <span class="nutri-tag">Included</span>
         </div>`).join("")}
@@ -287,10 +295,6 @@
 
       <button type="button" id="addFamBasket" class="primary-cta mt-4">Add Weekly Basket to Cart</button>
     </div>`;
-  }
-
-  function producePhoto(item) {
-    return `<img class="produce-img" src="${item.photo}" alt="${item.name}" />`;
   }
 
   function renderHome() {
@@ -319,7 +323,7 @@
         ${state.cart.length === 0 ? `<p style="color:var(--ink-mute);">Your cart is empty.</p>` : `
           <div class="panel">
             <p class="panel-kicker">${t.nutriSummary}</p>
-            <p style="font-size:13px;color:#4ade80;font-weight:800;margin-top:4px;">🌱 Total Iron: 8.4mg | Fiber: 12.2g | 240 kcal</p>
+            <p style="font-size:13px;color:#4ade80;font-weight:800;margin-top:4px;">🌱 Total Iron: 12.4mg | Fiber: 18.2g | 420 kcal</p>
           </div>
           ${state.cart.map(c => `<div style="display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid var(--border-soft);">
             <div><strong style="color:#fff;">${c.name}</strong><br/><span style="font-size:12px;color:var(--ink-mute);">Qty: ${c.qty || 1}</span></div>
@@ -364,6 +368,7 @@
   function bind() {
     screensEl.querySelectorAll("[data-go]").forEach((b) => b.addEventListener("click", () => go(b.dataset.go)));
     screensEl.querySelectorAll("[data-select-mode]").forEach((b) => b.addEventListener("click", () => { state.homeTab = b.dataset.selectMode; render(); }));
+    screensEl.querySelectorAll("[data-od-cat]").forEach((b) => b.addEventListener("click", () => { state.odCategory = b.dataset.odCat; render(); }));
 
     $("#toggleLang")?.addEventListener("click", () => { state.lang = state.lang === "en" ? "mr" : "en"; render(); });
     $("#openProfile")?.addEventListener("click", () => { state.profileOpen = true; render(); });
@@ -375,19 +380,23 @@
 
     $("#incKits")?.addEventListener("click", () => { state.numKits++; render(); });
     $("#decKits")?.addEventListener("click", () => { if (state.numKits > 1) state.numKits--; render(); });
+    $("#kitSame")?.addEventListener("click", () => { state.kitMode = "same"; render(); });
+    $("#kitSeparate")?.addEventListener("click", () => { state.kitMode = "separate"; render(); });
 
     screensEl.querySelectorAll("[data-add-cart]").forEach((b) => {
       b.addEventListener("click", () => {
         const id = b.dataset.addCart;
-        const v = CATALOG.Veggies.find(x => x.id === id);
-        state.cart.push({ id: v.id, name: v.name, price: v.pricePerKg, qty: 1 });
-        toast("Added to Cart");
-        render();
+        const v = Object.values(CATALOG).flat().find(x => x.id === id);
+        if (v) {
+          state.cart.push({ id: v.id, name: v.name, price: v.pricePerKg, qty: 1 });
+          toast("Added to Cart");
+          render();
+        }
       });
     });
 
     $("#addMomsKit")?.addEventListener("click", () => {
-      state.cart.push({ id: "moms-kit", name: `Mom's Kit (${state.numKits} Kits)`, price: 299 * state.numKits, qty: 1 });
+      state.cart.push({ id: "moms-kit", name: `Mom's Kit (${state.numKits} Kits - ${state.kitMode})`, price: 299 * state.numKits, qty: 1 });
       toast("Mom's Kits added");
       go("cart");
     });

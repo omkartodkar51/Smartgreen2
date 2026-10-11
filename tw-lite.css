@@ -1,36 +1,161 @@
-/* Tailwind Lite Utility Fallback */
-*, ::before, ::after { box-sizing: border-box; }
-body { margin: 0; }
+/* Local layout utilities — Dark Mode Optimized */
+.bg-stage { background: #121212; }
+.bg-peach { background-color: #f36c21 !important; }
+.top-1\.5 { top: .375rem; }
+.right-1\.5 { right: .375rem; }
+.w-6 { width: 1.5rem; }
+.h-6 { height: 1.5rem; }
+.w-8 { width: 2rem; }
+.h-8 { height: 2rem; }
+.rounded-md { border-radius: .375rem; }
+.mb-3 { margin-bottom: .75rem; }
+.mb-6 { margin-bottom: 1.5rem; }
+.app-shell {
+  margin: 0 auto;
+  min-height: 100dvh;
+  width: 100%;
+  max-width: 440px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 25px 50px rgba(0,0,0,.6);
+  background: #121212;
+}
+.font-sans { font-family: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif; }
+.antialiased { -webkit-font-smoothing: antialiased; }
+
+.relative { position: relative; }
+.absolute { position: absolute; }
+.inset-0 { inset: 0; }
+.top-2 { top: .5rem; }
+.left-2 { left: .5rem; }
+.right-2 { right: .5rem; }
+.-top-1 { top: -.25rem; }
+.-right-1 { right: -.25rem; }
+
 .flex { display: flex; }
+.inline-flex { display: inline-flex; }
+.grid { display: grid; }
+.hidden { display: none !important; }
+.flex-1 { flex: 1 1 0%; }
 .flex-col { flex-direction: column; }
+.flex-wrap { flex-wrap: wrap; }
 .items-center { align-items: center; }
+.items-start { align-items: flex-start; }
+.items-baseline { align-items: baseline; }
 .justify-between { justify-content: space-between; }
 .justify-center { justify-content: center; }
-.grid { display: grid; }
+.shrink-0 { flex-shrink: 0; }
+.min-w-0 { min-width: 0; }
+.place-items-center { place-items: center; }
 .grid-cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-.gap-2 { gap: 0.5rem; }
-.gap-3 { gap: 0.75rem; }
+.grid-cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.gap-1 { gap: .25rem; }
+.gap-1\.5 { gap: .375rem; }
+.gap-2 { gap: .5rem; }
+.gap-2\.5 { gap: .625rem; }
+.gap-3 { gap: .75rem; }
 .gap-4 { gap: 1rem; }
+.space-y-2 > * + * { margin-top: .5rem; }
+.space-y-3 > * + * { margin-top: .75rem; }
 .space-y-4 > * + * { margin-top: 1rem; }
+
 .w-full { width: 100%; }
+.w-3 { width: .75rem; }
+.w-5 { width: 1.25rem; }
+.w-7 { width: 1.75rem; }
+.w-9 { width: 2.25rem; }
+.w-10 { width: 2.5rem; }
+.w-11 { width: 2.75rem; }
+.w-12 { width: 3rem; }
+.w-14 { width: 3.5rem; }
+.w-16 { width: 4rem; }
+.w-20 { width: 5rem; }
+.max-w-sm { max-width: 24rem; }
+.max-w-\[280px\] { max-width: 280px; }
+
+.h-3 { height: .75rem; }
+.h-5 { height: 1.25rem; }
+.h-6 { height: 1.5rem; }
+.h-7 { height: 1.75rem; }
+.h-8 { height: 2rem; }
+.h-9 { height: 2.25rem; }
+.h-10 { height: 2.5rem; }
+.h-11 { height: 2.75rem; }
+.h-12 { height: 3rem; }
 .h-14 { height: 3.5rem; }
-.p-3 { padding: 0.75rem; }
+.h-16 { height: 4rem; }
+.h-20 { height: 5rem; }
+.h-28 { height: 7rem; }
+.h-40 { height: 10rem; }
+.h-full { height: 100%; }
+.h-px { height: 1px; }
+
+.p-1 { padding: .25rem; }
+.p-2\.5 { padding: .625rem; }
+.p-3 { padding: .75rem; }
+.p-3\.5 { padding: .875rem; }
 .p-4 { padding: 1rem; }
+.p-6 { padding: 1.5rem; }
+.px-2 { padding-left: .5rem; padding-right: .5rem; }
+.px-4 { padding-left: 1rem; padding-right: 1rem; }
 .px-5 { padding-left: 1.25rem; padding-right: 1.25rem; }
-.py-2 { padding-top: 0.5rem; padding-bottom: 0.5rem; }
-.mt-2 { margin-top: 0.5rem; }
-.mt-3 { margin-top: 0.75rem; }
+.px-6 { padding-left: 1.5rem; padding-right: 1.5rem; }
+.py-1 { padding-top: .25rem; padding-bottom: .25rem; }
+.py-2 { padding-top: .5rem; padding-bottom: .5rem; }
+.py-3 { padding-top: .75rem; padding-bottom: .75rem; }
+.py-4 { padding-top: 1rem; padding-bottom: 1rem; }
+.pt-3 { padding-top: .75rem; }
+.pt-4 { padding-top: 1rem; }
+.pt-8 { padding-top: 2rem; }
+.pt-12 { padding-top: 3rem; }
+.pt-14 { padding-top: 3.5rem; }
+.pt-20 { padding-top: 5rem; }
+.pb-3 { padding-bottom: .75rem; }
+.pb-4 { padding-bottom: 1rem; }
+.pb-8 { padding-bottom: 2rem; }
+.mb-2 { margin-bottom: .5rem; }
+.mb-4 { margin-bottom: 1rem; }
+.mb-5 { margin-bottom: 1.25rem; }
+.mt-1 { margin-top: .25rem; }
+.mt-2 { margin-top: .5rem; }
+.mt-3 { margin-top: .75rem; }
 .mt-4 { margin-top: 1rem; }
-.mt-6 { margin-top: 1.5rem; }
-.rounded-xl { border-radius: 0.75rem; }
+.mt-5 { margin-top: 1.25rem; }
+.mt-8 { margin-top: 2rem; }
+.mx-auto { margin-left: auto; margin-right: auto; }
+
+.rounded-lg { border-radius: .5rem; }
+.rounded-xl { border-radius: .75rem; }
 .rounded-2xl { border-radius: 1rem; }
-.text-xs { font-size: 0.75rem; line-height: 1rem; }
-.text-sm { font-size: 0.875rem; line-height: 1.25rem; }
+.rounded-3xl { border-radius: 1.5rem; }
+.rounded-full { border-radius: 9999px; }
+
+.border { border-width: 1px; border-style: solid; border-color: #2d2d33; }
+.border-b { border-bottom-width: 1px; border-bottom-style: solid; border-color: #2d2d33; }
+.border-t { border-top-width: 1px; border-top-style: solid; border-color: #2d2d33; }
+.border-transparent { border-color: transparent; }
+
+.bg-white { background-color: #18181b !important; }
+.bg-black { background-color: #000 !important; }
+.bg-ink { background-color: #f4f4f4 !important; }
+
+.text-white { color: #fff !important; }
+.text-center { text-align: center; }
+.text-left { text-align: left; }
+.text-right { text-align: right; }
+.text-xs { font-size: .75rem; line-height: 1rem; }
+.text-sm { font-size: .875rem; line-height: 1.25rem; }
+.text-base { font-size: 1rem; line-height: 1.5rem; }
 .text-lg { font-size: 1.125rem; line-height: 1.75rem; }
 .text-xl { font-size: 1.25rem; line-height: 1.75rem; }
+.text-2xl { font-size: 1.5rem; line-height: 2rem; }
 .text-3xl { font-size: 1.875rem; line-height: 2.25rem; }
+.text-4xl { font-size: 2.25rem; line-height: 2.5rem; }
+.font-medium { font-weight: 500; }
+.font-semibold { font-weight: 600; }
+.font-bold { font-weight: 700; }
 .font-extrabold { font-weight: 800; }
-.bg-white { background-color: #ffffff; }
-.bg-black { background-color: #000000; }
-.text-white { color: #ffffff; }
-.text-black { color: #000000; }
+.uppercase { text-transform: uppercase; }
+.tracking-tight { letter-spacing: -.025em; }
+.tracking-wider { letter-spacing: .05em; }
+.truncate { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
